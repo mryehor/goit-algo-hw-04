@@ -35,5 +35,4 @@ def main():
     print(Fore.YELLOW + f"Структура директорії: {directory}\n")
     show_directory_structure(directory)
 
-if __name__ == "__main__":
-    main()
+
