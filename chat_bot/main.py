@@ -10,42 +10,40 @@ def main():
 
     def add_contact(args) :
         if len(args) < 2:
-            print("Enter name and phone number")
-            return
+            return "Enter name and phone number"
         name, phone = args[0], args[1]
         contacts[name] = phone
-        print(f"Contact with name {name} and number {phone} added ")
+        return f"Contact with name {name} and number {phone} added "
 
     def change_contact(args):
         if len(args) < 2 :
-            print("Enter name and new phone number")
-            return
+            return "Enter name and new phone number"
         name, phone = args[0], args[1]
 
         if name in contacts:
             contacts[name] = phone
-            print(f"Phone number for {name} changed to {phone}")
+            return f"Phone number for {name} changed to {phone}"
         else:
-            print(f"Contact with name {name} not found ")
+            return f"Contact with name {name} not found "
 
     def show_phone(args) :
         if not args:
-            print("Enter contact name")
-            return
+            return "Enter contact name"
         name = args[0]
         phone = contacts.get(name)
         if phone:
-            print(f"Phone number for {name}: {phone}")
+            return f"Phone number for {name}: {phone}"
         else:
-            print(f"Contact with name {name} not found")
+            return f"Contact with name {name} not found"
 
     def show_all():
         if not contacts:
-            print("Contact is absent")
+            return "Contact list is empty"
         else:    
-            print("All contacts:")
+            result = ["All contacts: "]
             for name, phone in contacts.items():
-                print(f"{name.title()}: {phone}")
+                result.append(f"{name.title()}: {phone}")
+            return "\n".join(result)
 
     print("Welcome to the assistant bot!")
     
@@ -61,17 +59,21 @@ def main():
             print("How can I help you?")
 
         elif command == "add":
-            add_contact(args)
+            result = add_contact(args)
+            print(result)
 
         elif command == "change":
-            change_contact(args)
+            result = change_contact(args)
+            print(result)
 
         elif command == "phone":
-            show_phone(args)
+            result = show_phone(args)
+            print(result)
 
         elif command == "show":
-            show_all()
-
+            result = show_all()
+            print(result)
+            
         else:
             print("Unknown command. Try: add, change, phone, show, exit")
 
