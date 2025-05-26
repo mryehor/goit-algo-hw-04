@@ -1,7 +1,7 @@
 from pathlib import Path
 
-def total_salary():
-    file_path = Path("path.txt")
+def total_salary(path: str):
+    file_path = Path(path)
 
     if not file_path.exists():
         print(f"Файл {file_path} не знайдено.")
@@ -33,7 +33,7 @@ def total_salary():
     average = round(total / count, 2) if count > 0 else 0
     return total, average
 
-result = total_salary()
+result = total_salary("path.txt")
 if result:
     total, average = result
     print(f"Загальна сума заробітної плати: {total}")
